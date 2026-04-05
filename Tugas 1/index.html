@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Membuat halaman responsif menyesuaikan  ukuran layar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Judul halaman yang tampil di tab browser -->
+    <title>Mugiwara Pirates — Menuju One Piece</title>
+
+    <!-- Import font Google: Cinzel -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --gold: #38bdf8;
+        --gold-dark: #0ea5e9;
+        --navy: #020c18;
+        --navy-mid: #041428;
+        --red: #7dd3fc;
+        --cream: #e0f2fe;
+        --white-70: rgba(186, 230, 255, 0.75);
+        --shadow: 0 4px 30px rgba(0, 30, 60, 0.7);
+
+        --ocean-glow: rgba(56, 189, 248, 0.18);
+        --wave-teal: #06b6d4;
+        --deep-blue: #0c2340;
+        --foam-white: rgba(224, 242, 254, 0.12);
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Lebar elemen(padding dan border) */
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        background-color: var(--navy);
+        color: var(--cream);
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 48px;
+        background: rgba(2, 12, 24, 0.88);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+      }
+
+      /* Logo teks di navbar */
+      .nav-logo {
+        font-family: "Cinzel", serif;
+        font-size: 1.3rem;
+        font-weight: 900;
+        color: var(--gold);
+        letter-spacing: 2px;
+        text-decoration: none;
+      }
+
+      /* Daftar tautan navigasi */
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 32px;
+      }
+
+      /* Setiap tautan navigasi */
+      .nav-links a {
+        text-decoration: none;
+        color: var(--cream);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        transition: color 0.3s ease;
+      }
+
+      /* Efek hover pada nav */
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+
+      /* HERO SECTION */
+      #hero {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      /* Layer gambar bg */
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("hero.jpg");
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        transform: scale(1.05);
+        animation: slowZoom 20s ease-in-out infinite alternate;
+
+        filter: brightness(0.55);
+      }
+
+      /* Animasi zoom tipis" bg */
+      @keyframes slowZoom {
+        from {
+          transform: scale(1.05);
+        }
+        to {
+          transform: scale(1.12);
+        }
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(2, 12, 24, 0.25) 0%,
+          rgba(4, 20, 40, 0.05) 40%,
+          rgba(2, 12, 24, 0.8) 100%
+        );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 820px;
+        padding: 0 24px;
+        animation: fadeUp 1.2s ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 18px;
+        animation: fadeUp 1.2s 0.2s ease both;
+      }
+
+      /* Judul utama hero (H1) */
+      .hero-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(2.8rem, 8vw, 6rem);
+        font-weight: 900;
+        line-height: 1.05;
+        color: #ffffff;
+        text-shadow: 0 2px 40px rgba(0, 0, 0, 0.8);
+        margin-bottom: 8px;
+        animation: fadeUp 1.2s 0.35s ease both;
+      }
+
+      .hero-title span {
+        color: var(--gold);
+        text-shadow: 0 0 35px rgba(56, 189, 248, 0.65);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        font-weight: 300;
+        color: var(--white-70);
+        margin: 20px 0 36px;
+        animation: fadeUp 1.2s 0.5s ease both;
+      }
+
+      .btn-gold {
+        display: inline-block;
+        padding: 14px 40px;
+        background: var(--gold);
+        color: var(--navy);
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
+        border-radius: 2px;
+        transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+        box-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+        animation: fadeUp 1.2s 0.65s ease both;
+      }
+
+      .btn-gold:hover {
+        background: var(--gold-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(56, 189, 248, 0.65);
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        color: var(--white-70);
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(8px);
+        }
+      }
+
+      /* Panah scroll hint menggunakan border CSS */
+      .scroll-hint::after {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border-right: 2px solid var(--gold);
+        border-bottom: 2px solid var(--gold);
+        transform: rotate(45deg);
+        display: block;
+      }
+
+      /* Section Base */
+      section {
+        padding: 96px 24px;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* Label kecil di atas judul section */
+      .section-eyebrow {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+      }
+
+      /* Judul utama setiap section (H2) */
+      .section-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      /* Garis dekorasi di bawah judul section */
+      .section-divider {
+        width: 60px;
+        height: 3px;
+        background: var(--gold);
+        margin-bottom: 40px;
+        border-radius: 2px;
+      }
+
+      /* ABOUT SECTION: Deskripsi One Piece */
+      #about {
+        background-color: var(--navy-mid);
+      }
+
+      /* Teks paragraf di about */
+      #about p {
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: rgba(224, 242, 254, 0.82);
+        max-width: 760px;
+        margin-bottom: 20px;
+      }
+
+      .quote-box {
+        margin: 48px 0;
+        padding: 28px 36px;
+        border-left: 4px solid var(--gold);
+        background: rgba(56, 189, 248, 0.07);
+        border-radius: 0 8px 8px 0;
+        box-shadow: inset 0 0 40px rgba(56, 189, 248, 0.04);
+      }
+
+      /* Teks kutipan */
+      .quote-box blockquote {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        font-style: italic;
+        color: var(--gold);
+        line-height: 1.6;
+      }
+
+      .quote-box cite {
+        display: block;
+        margin-top: 12px;
+        font-size: 0.8rem;
+        font-style: normal;
+        color: var(--white-70);
+        letter-spacing: 2px;
+      }
+
+      /* CREW SECTION */
+      #crew {
+        background-color: var(--navy);
+      }
+
+      /* Grid layout untuk kartu kru */
+      .crew-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+        margin-top: 16px;
+      }
+
+      /* Setiap kartu anggota kru */
+      .crew-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(245, 197, 24, 0.15);
+        border-radius: 8px;
+        padding: 32px 28px;
+        transition: transform 0.3s ease, border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Efek hover pada kartu */
+      .crew-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(245, 197, 24, 0.5);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Garis dekorasi atas kartu (muncul saat hover) */
+      .crew-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        transform-origin: left;
+      }
+
+      .crew-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      /* Ikon emoji di setiap kartu */
+      .crew-icon {
+        font-size: 2.4rem;
+        margin-bottom: 16px;
+      }
+
+      /* Nama anggota kru */
+      .crew-name {
+        font-family: "Cinzel", serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--gold);
+        margin-bottom: 6px;
+      }
+
+      .crew-role {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--white-70);
+        margin-bottom: 14px;
+      }
+
+      /* Deskripsi anggota */
+      .crew-desc {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: rgba(245, 240, 232, 0.75);
+      }
+
+      /* JOURNEY SECTION: Timeline perjalanan kru Mugiwara */
+      #journey {
+        background-color: var(--navy-mid);
+      }
+
+      /* Wrapper timeline */
+      .timeline {
+        position: relative;
+        margin-top: 16px;
+        padding-left: 32px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 48px;
+        padding-left: 32px;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -28px;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--gold);
+        border: 3px solid var(--navy-mid);
+        box-shadow: 0 0 10px rgba(245, 197, 24, 0.5);
+      }
+
+      /* Judul setiap arc perjalanan */
+      .timeline-arc {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--gold);
+        margin-bottom: 6px;
+      }
+
+      .timeline-desc {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: rgba(245, 240, 232, 0.78);
+        max-width: 680px;
+      }
+
+      /* Badge label arc */
+      .arc-badge {
+        display: inline-block;
+        padding: 3px 12px;
+        background: rgba(245, 197, 24, 0.12);
+        border: 1px solid rgba(245, 197, 24, 0.3);
+        border-radius: 20px;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+
+      /* BOUNTY BACKGROUND */
+
+      #bounty {
+        position: relative;
+      }
+
+      /* Background gambar bounty section */
+      .bounty-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("bounty.jpg");
+
+        background-size: cover;
+        background-position: center;
+
+        filter: brightness(0.35);
+
+        z-index: -1;
+      }
+
+      .card-img-top {
+        height: 220px;
+        object-fit: cover;
+      }
+
+      /* FOOTER */
+      footer {
+        background: #060f1e;
+        padding: 48px 24px;
+        text-align: center;
+        border-top: 1px solid rgba(245, 197, 24, 0.1);
+      }
+
+      /* Teks logo di footer */
+      .footer-logo {
+        font-family: "Cinzel", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--gold);
+        margin-bottom: 16px;
+      }
+
+      /* Teks copyright footer */
+      footer p {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.35);
+        line-height: 1.8;
+      }
+
+      /* Warna aksen merah untuk nama */
+      .red-accent {
+        color: var(--red);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 640px) {
+        nav {
+          padding: 14px 20px;
+        }
+        .nav-links {
+          gap: 16px;
+        }
+        .nav-links a {
+          font-size: 0.75rem;
+        }
+
+        section {
+          padding: 64px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <!-- Logo brand -->
+      <a class="nav-logo" href="#hero">☠ Mugiwara</a>
+
+      <!-- Daftar navigasi -->
+      <ul class="nav-links">
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#crew">Kru</a></li>
+        <li><a href="#journey">Story Arcs</a></li>
+        <li><a href="#bounty">Bounty</a></li>
+      </ul>
+    </nav>
+
+    <!-- ==========================================
+       HERO SECTION: Tampilan utama halaman
+       ========================================== -->
+    <section id="hero">
+      <!-- Div background gambar One Piece -->
+      <div
+        class="hero-bg"
+        role="img"
+        aria-label="Kru Mugiwara menatap matahari terbenam"
+      ></div>
+
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">⚓ The Grand Line Awaits</p>
+
+        <h1 class="hero-title">
+          Kru <span>Topi Jerami</span><br />
+          & Impian Terbesar
+        </h1>
+
+        <p class="hero-subtitle">
+          Sembilan bajak laut. Satu tujuan. Satu harta karun yang mengubah
+          dunia.<br />
+          Perjalanan epik Monkey D. Luffy dan Kru Mugiwara menuju
+          <em>One Piece</em>.
+        </p>
+
+        <a href="#about" class="btn-gold">Mulai Petualangan</a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+       ABOUT SECTION: Penjelasan tentang One Piece
+       ========================================== -->
+    <section id="about">
+      <div class="container">
+        <p class="section-eyebrow">Dunia One Piece</p>
+        <h2 class="section-title">Apa Itu One Piece?</h2>
+        <div class="section-divider"></div>
+
+        <!-- Paragraf pertama -->
+        <p>
+          <strong>One Piece</strong> adalah manga dan anime karya Eiichiro Oda
+          yang pertama kali terbit pada 1997. Kisahnya berlatar di dunia lautan
+          luas bernama <em>Grand Line</em>, sebuah jalur lautan berbahaya yang
+          menjadi panggung para bajak laut legendaris. Di sinilah harta karun
+          terbesar dunia, <strong>One Piece</strong>, disembunyikan oleh Raja
+          Bajak Laut terakhir, <em>Gol D. Roger</em>.
+        </p>
+
+        <!-- Paragraf kedua -->
+        <p>
+          Monkey D. <strong>Luffy</strong>, seorang pemuda bertopi jerami dari
+          desa Foosha, bermimpi menjadi Raja Bajak Laut. Dengan kemampuan buah
+          iblis <em>Gomu Gomu no Mi</em> yang mengubah tubuhnya menjadi karet,
+          Luffy memulai petualangan mengarungi lautan — mengumpulkan teman-teman
+          setia, menghadapi musuh maha kuat, dan menantang tatanan dunia yang
+          korup.
+        </p>
+
+        <div class="quote-box">
+          <blockquote>
+            "Aku tidak akan menjadi Raja Bajak Laut terkuat di lautan. Aku hanya
+            ingin menjadi <em>yang paling bebas</em>."
+          </blockquote>
+          <cite>— Monkey D. Luffy</cite>
+        </div>
+
+        <!-- Paragraf ketiga -->
+        <p>
+          One Piece bukan sekadar kisah bajak laut. Ini adalah cerita tentang
+          <strong>persahabatan</strong>, <strong>kebebasan</strong>, dan
+          keberanian mempertahankan mimpi di tengah badai. Setiap anggota kru
+          Mugiwara membawa luka dan impian tersendiri — dan bersama-sama, mereka
+          menjadi keluarga yang tak terpisahkan.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================
+       CREW SECTION: Profil anggota kru Mugiwara
+       ========================================== -->
+    <section id="crew">
+      <div class="container">
+        <p class="section-eyebrow">Straw Hat Pirates</p>
+        <h2 class="section-title">Kru Mugiwara</h2>
+        <div class="section-divider"></div>
+
+        <div class="crew-grid">
+          <!-- Kartu 1: Luffy -->
+          <article class="crew-card">
+            <div class="crew-icon">🎩</div>
+            <h3 class="crew-name">Monkey D. Luffy</h3>
+            <p class="crew-role">Kapten</p>
+            <!-- Deskripsi anggota -->
+            <p class="crew-desc">
+              Pemilik topi jerami dari Shanks. Bertekad menjadi Raja Bajak Laut.
+              Kekuatan buah iblis Gomu-Gomu menjadikannya petarung luar biasa.
+              Kepribadiannya lugu namun jiwa kepemimpinannya tak tertandingi.
+            </p>
+          </article>
+
+          <!-- Kartu 2: Zoro -->
+          <article class="crew-card">
+            <div class="crew-icon">⚔️</div>
+            <h3 class="crew-name">Roronoa Zoro</h3>
+            <p class="crew-role">Ahli Pedang / Wakil Kapten</p>
+            <p class="crew-desc">
+              Pendekar tiga pedang yang bermimpi menjadi pedang terkuat di
+              dunia. Mantan bounty hunter yang bergabung sejak awal petualangan
+              Luffy. Loyalitas dan disiplinnya menjadi tulang punggung kru.
+            </p>
+          </article>
+
+          <!-- Kartu 3: Nami -->
+          <article class="crew-card">
+            <div class="crew-icon">🗺️</div>
+            <h3 class="crew-name">Nami</h3>
+            <p class="crew-role">Navigator</p>
+            <p class="crew-desc">
+              Navigator jenius yang bermimpi memetakan seluruh samudra. Mahir
+              membaca cuaca dan menggunakan clima-tact sebagai senjata. Masa
+              lalunya yang pahit memperkuat tekadnya untuk berlayar bebas.
+            </p>
+          </article>
+
+          <!-- Kartu 4: Usopp -->
+          <article class="crew-card">
+            <div class="crew-icon">🔧</div>
+            <h3 class="crew-name">Usopp</h3>
+            <p class="crew-role">Sniper / Mekanik</p>
+            <p class="crew-desc">
+              Penembak jitu dengan imajinasi liar dan keberanian yang tumbuh
+              perlahan. Selalu bermimpi menjadi pahlawan pemberani. Ahli membuat
+              alat dan senjata kreatif di kapal.
+            </p>
+          </article>
+
+          <!-- Kartu 5: Sanji -->
+          <article class="crew-card">
+            <div class="crew-icon">🍳</div>
+            <h3 class="crew-name">Vinsmoke Sanji</h3>
+            <p class="crew-role">Juru Masak</p>
+            <p class="crew-desc">
+              Koki terbaik yang memiliki prinsip tidak pernah menyakiti wanita.
+              Bertarung hanya dengan kaki — teknik "Black Leg Style"-nya
+              mematikan. Bermimpi menemukan All Blue, lautan legendaris tempat
+              semua ikan berkumpul.
+            </p>
+          </article>
+
+          <!-- Kartu 6: Chopper -->
+          <article class="crew-card">
+            <div class="crew-icon">🦌</div>
+            <h3 class="crew-name">Tony Tony Chopper</h3>
+            <p class="crew-role">Dokter</p>
+            <p class="crew-desc">
+              Rusa kutub yang memakan buah iblis Hito Hito no Mi sehingga bisa
+              berbicara dan berubah wujud. Dokter kru yang ingin menyembuhkan
+              semua penyakit di dunia. Polosnya membuat dia jadi maskot kru.
+            </p>
+          </article>
+
+          <!-- Kartu 7: Robin -->
+          <article class="crew-card">
+            <div class="crew-icon">📖</div>
+            <h3 class="crew-name">Nico Robin</h3>
+            <p class="crew-role">Arkeolog</p>
+            <p class="crew-desc">
+              Satu-satunya arkeolog yang bisa membaca Poneglyph — batu
+              bersejarah yang menyimpan sejarah dunia yang tersembunyi. Buah
+              Hana-Hana memungkinkannya menumbuhkan anggota tubuh di mana saja.
+            </p>
+          </article>
+
+          <!-- Kartu 8: Franky -->
+          <article class="crew-card">
+            <div class="crew-icon">🚢</div>
+            <h3 class="crew-name">Franky</h3>
+            <p class="crew-role">Tukang Kapal</p>
+            <p class="crew-desc">
+              Mantan bajak laut yang memodifikasi tubuhnya menjadi cyborg dengan
+              berbagai senjata. Pembangun kapal Thousand Sunny yang legendaris.
+              Impiannya adalah mengarungi seluruh dunia dengan kapal buatannya
+              sendiri.
+            </p>
+          </article>
+
+          <!-- Kartu 9: Brook -->
+          <article class="crew-card">
+            <div class="crew-icon">🎻</div>
+            <h3 class="crew-name">Brook</h3>
+            <p class="crew-role">Musisi</p>
+            <p class="crew-desc">
+              Kerangka hidup yang dimungkinkan oleh buah Yomi-Yomi no Mi. Musisi
+              jiwa bebas yang menghangatkan suasana kru dengan musiknya. Sudah
+              berkelana sendirian selama 50 tahun sebelum bertemu Luffy.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+       JOURNEY SECTION: Timeline perjalanan kru
+       ========================================== -->
+    <section id="journey">
+      <div class="container">
+        <p class="section-eyebrow">Saga & Arc</p>
+        <h2 class="section-title">Perjalanan Epik Menuju One Piece</h2>
+        <div class="section-divider"></div>
+
+        <div class="timeline">
+          <!-- Arc 1 -->
+          <div class="timeline-item">
+            <span class="arc-badge">East Blue Saga</span>
+            <h3 class="timeline-arc">Awal Mula — Desa Foosha & Arlong Park</h3>
+            <p class="timeline-desc">
+              Luffy memulai perjalanan dari Desa Foosha, mengumpulkan Zoro,
+              Nami, Usopp, dan Sanji. Kemenangan besar pertama: mengalahkan
+              bajak laut ikan-manusia Arlong yang telah menindas kampung halaman
+              Nami selama bertahun-tahun.
+            </p>
+          </div>
+
+          <!-- Arc 2 -->
+          <div class="timeline-item">
+            <span class="arc-badge">Baroque Works Saga</span>
+            <h3 class="timeline-arc">Alabasta — Melawan Crocodile</h3>
+            <p class="timeline-desc">
+              Kru tiba di Grand Line dan berpetualang di gurun Alabasta. Mereka
+              mengalahkan Crocodile, salah satu anggota Shichibukai,
+              menyelamatkan kerajaan dari kehancuran, dan Nico Robin bergabung
+              dengan kru.
+            </p>
+          </div>
+
+          <!-- Arc 3 -->
+          <div class="timeline-item">
+            <span class="arc-badge">Sky Island Saga</span>
+            <h3 class="timeline-arc">Skypiea — Pulau di Awan</h3>
+            <p class="timeline-desc">
+              Kru menemukan jalan ke pulau di atas awan, Skypiea. Di sini mereka
+              menghadapi Enel, dewa yang mengaku berkuasa atas seluruh langit.
+              Kemenangan ini membawa mereka pada misteri Poneglyph pertama.
+            </p>
+          </div>
+
+          <!-- Arc 4 -->
+          <div class="timeline-item">
+            <span class="arc-badge">Water 7 Saga</span>
+            <h3 class="timeline-arc">Enies Lobby — "Aku Ingin Hidup!"</h3>
+            <p class="timeline-desc">
+              Salah satu momen paling emosional: Luffy menyatakan perang pada
+              Pemerintah Dunia demi menyelamatkan Robin. Di sinilah Robin
+              mengucapkan kalimat bersejarah — "Aku ingin ikut bersama kalian!"
+            </p>
+          </div>
+
+          <!-- Arc 5 -->
+          <div class="timeline-item">
+            <span class="arc-badge">Marineford Saga</span>
+            <h3 class="timeline-arc">Perang Marineford — Pengorbanan Ace</h3>
+            <p class="timeline-desc">
+              Perang terbesar dalam sejarah One Piece. Luffy bertarung sendirian
+              di jantung markas Marine demi menyelamatkan saudara angkatnya,
+              Portgas D. Ace. Tragedi ini mengubah Luffy dan dunia selamanya —
+              dan memaksanya tumbuh lebih kuat.
+            </p>
+          </div>
+
+          <!-- Arc 6 -->
+          <div class="timeline-item">
+            <span class="arc-badge">New World — Wano Arc</span>
+            <h3 class="timeline-arc">Wano Kuni — Alliance Terbesar</h3>
+            <p class="timeline-desc">
+              Di negeri samurai Wano yang terisolasi, Luffy memimpin aliansi
+              besar melawan Kaido — salah satu Yonko (Kaisar Laut) terkuat.
+              Kemenangan di Wano membawa Luffy selangkah lebih dekat menuju
+              tahta Raja Bajak Laut.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+   BOUNTY SECTION: Daftar bounty kru Mugiwara
+   ========================================== -->
+    <section id="bounty">
+      <!-- Background Bounty Section -->
+      <div class="bounty-bg"></div>
+      <div class="container">
+        <h3 class="section-eyebrow text-center">Wanted Poster</h3>
+        <h2 class="section-title text-center">Bounty Kru Mugiwara</h2>
+        <div class="section-divider" style="margin: 0 auto 40px"></div>
+
+        <div class="row g-4">
+          <!-- Luffy -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img
+                src="img/luffy.jpg"
+                class="card-img-top"
+                alt="Monkey D. Luffy"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Monkey D. Luffy</h5>
+                <h6 class="text-danger fw-bold">3,000,000,000 Berries</h6>
+                <p class="card-text">
+                  Setelah mengalahkan Kaido dalam perang Wano dan membangkitkan
+                  kekuatan Gear 5, Luffy diakui sebagai salah satu Yonko baru.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zoro -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img src="img/zoro.jpg" class="card-img-top" alt="Roronoa Zoro" />
+              <div class="card-body">
+                <h5 class="card-title">Roronoa Zoro</h5>
+                <h6 class="text-danger fw-bold">1,111,000,000 Berries</h6>
+                <p class="card-text">
+                  Mengalahkan King, komandan terkuat Bajak Laut Beast, dalam
+                  pertempuran besar di Onigashima selama perang Wano.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jinbe -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img src="img/jinbe.jpg" class="card-img-top" alt="Jinbe" />
+              <div class="card-body">
+                <h5 class="card-title">Jinbe</h5>
+                <h6 class="text-danger fw-bold">1,100,000,000 Berries</h6>
+                <p class="card-text">
+                  Mengalahkan Who's Who dari kelompok Tobiroppo dalam perang
+                  Onigashima menggunakan teknik karate manusia ikan.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sanji -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img
+                src="img/sanji.jpg"
+                class="card-img-top"
+                alt="Vinsmoke Sanji"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Vinsmoke Sanji</h5>
+                <h6 class="text-danger fw-bold">1,032,000,000 Berries</h6>
+                <p class="card-text">
+                  Mengalahkan Queen dari Beast Pirates setelah membangkitkan
+                  kekuatan genetika Germa dan teknik Ifrit Jambe.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Robin -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img src="img/robin.jpg" class="card-img-top" alt="Nico Robin" />
+              <div class="card-body">
+                <h5 class="card-title">Nico Robin</h5>
+                <h6 class="text-danger fw-bold">930,000,000 Berries</h6>
+                <p class="card-text">
+                  Mengalahkan Black Maria dengan teknik Demonio Fleur dalam
+                  perang Onigashima.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Usopp -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img src="img/usopp.jpg" class="card-img-top" alt="Usopp" />
+              <div class="card-body">
+                <h5 class="card-title">Usopp</h5>
+                <h6 class="text-danger fw-bold">500,000,000 Berries</h6>
+                <p class="card-text">
+                  Tetap dikenal sebagai God Usopp setelah kontribusinya dalam
+                  kekacauan perang besar melawan Beast Pirates.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Franky -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img src="img/franky.jpg" class="card-img-top" alt="Franky" />
+              <div class="card-body">
+                <h5 class="card-title">Franky</h5>
+                <h6 class="text-danger fw-bold">394,000,000 Berries</h6>
+                <p class="card-text">
+                  Mengalahkan Sasaki dari Tobiroppo menggunakan kekuatan robot
+                  General Franky.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brook -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img src="img/brook.jpg" class="card-img-top" alt="Brook" />
+              <div class="card-body">
+                <h5 class="card-title">Brook</h5>
+                <h6 class="text-danger fw-bold">383,000,000 Berries</h6>
+                <p class="card-text">
+                  Membantu Nico Robin melawan Black Maria dan menunjukkan
+                  kekuatan pedang serta kemampuan roh.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nami -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img src="img/nami.jpg" class="card-img-top" alt="Nami" />
+              <div class="card-body">
+                <h5 class="card-title">Nami</h5>
+                <h6 class="text-danger fw-bold">366,000,000 Berries</h6>
+                <p class="card-text">
+                  Mengalahkan Ulti dengan bantuan Zeus yang kini menjadi bagian
+                  dari Clima-Tact miliknya.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chopper -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 text-center">
+              <img
+                src="img/chopper.jpg"
+                class="card-img-top"
+                alt="Tony Tony Chopper"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Tony Tony Chopper</h5>
+                <h6 class="text-danger fw-bold">1,000 Berries</h6>
+                <p class="card-text">
+                  Mengembangkan obat untuk virus Ice Oni milik Queen dan
+                  membantu menyelamatkan banyak orang selama perang Wano.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+       FOOTER: Bagian paling bawah halaman
+       ========================================== -->
+    <footer>
+      <div class="footer-logo">☠ STRAW HAT PIRATES</div>
+
+      <p>
+        Tugas 1 <br />
+        Rendi Widya Anggita<br />
+        2311102278<br />
+      </p>
+      <br />
+
+      <!-- Copyright -->
+      <p>
+        &copy; 2026 One Piece Landing Page &mdash; Straw Hat Pirates Fan Page
+      </p>
+    </footer>
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

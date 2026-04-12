@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tugas Modul 6 - jQuery</title>
+
+    <!-- CDN jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        //    BAGIAN 2: HIDE / SHOW
+        $("#hideBtn").click(function () {
+          $("#paragraf").hide();
+        });
+
+        $("#showBtn").click(function () {
+          $("#paragraf").show();
+        });
+        //    BAGIAN 3: ANIMASI
+        $("#animateBtn").click(function () {
+          $("#box").animate({
+            height: "toggle",
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Efek HIDE / SHOW -->
+    <h2>1. Efek Hide / Show</h2>
+
+    <p id="paragraf">
+      Klik tombol "Hide" untuk menghilangkan kalimat ini, klik "Show" untuk
+      menampilkan kembali
+    </p>
+
+    <button id="hideBtn">Hide</button>
+    <button id="showBtn">Show</button>
+
+    <hr />
+
+    <!-- Efek Animasi -->
+    <h2>2. Efek Animasi</h2>
+
+    <p>Klik tombol untuk menjalankan animasi</p>
+    <button id="animateBtn">Start Animation</button>
+
+    <br /><br />
+
+    <div
+      id="box"
+      style="background: blue; height: 100px; width: 100px; position: relative"
+    ></div>
+  </body>
+</html>

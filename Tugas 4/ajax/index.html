@@ -1,0 +1,23 @@
+<!-- Rendi Widya Anggita -->
+<!-- 2311102278 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>The jQuery AJAX</h2>
+    <p id="demo">Let AJAX change this text.</p>
+    <button type="button" id="changeBtn">Change Content</button>
+    <script>
+      $(document).ready(function () {
+        $("#changeBtn").click(function () {
+          $("#demo").load("ajax_info.txt");
+        });
+      });
+    </script>
+  </body>
+</html>
